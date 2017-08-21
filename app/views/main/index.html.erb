@@ -1,0 +1,23 @@
+<div class="container">
+<% @products.each do |i|%>
+	<table class="table table-striped">
+	<h1><%= i.category_name %></h1>
+	<thead>
+    <tr>
+      <th>Application Name</th>
+      <th>Link</th>
+      <th>Position</th>
+    </tr>
+  </thead>
+		<% JSON(i.content).each do |cont| %>
+			<tbody>
+				<tr>
+					<td class="container"><%= cont['label'] %></td>
+					<td class="container"><%= cont['url'] %></td>
+					<td><%= cont['position'] %></td>
+				</tr>
+			</tbody>
+		<% end %>
+	</table>
+<% end %>
+</div>

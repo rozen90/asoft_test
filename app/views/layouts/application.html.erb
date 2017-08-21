@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AsoftTest</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body>
+    <nav class="navbar navbar-default">
+  	<div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">ProjectTest</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+    <% if admin_signed_in? %>
+    	<li>
+	    	<%= link_to 'Edit user', edit_admin_registration_path %>
+	    </li>
+	    <li>
+	    	<%= link_to 'Sign out(' + current_admin.email + ')', destroy_admin_session_path, method: :delete %>
+	    </li>
+	<% else %>
+		<li>
+		    <%= link_to 'Registration', new_admin_registration_path %>
+		</li>
+		<li>
+		    <%= link_to 'Admin', new_admin_session_path %>
+		</li>
+	<% end %>
+    </ul>
+  </div>
+</nav>
+
+	<div class="container">
+		<%= yield %>
+	</div>
+
+</body>
+</html>
